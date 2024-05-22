@@ -2,8 +2,6 @@
 license: apache-2.0
 ---
 
-> [!TIP] Weights only exist in [mistral-inference](https://github.com/mistralai/mistral-inference) format for now, PRs for Transformers format are welcome!
-
 # Model Card for Mistral-7B-Instruct-v0.3
 
 The Mistral-7B-Instruct-v0.3 Large Language Model (LLM) is an instruct fine-tuned version of the Mistral-7B-v0.3.
