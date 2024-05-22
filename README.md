@@ -31,6 +31,14 @@ mistral_models_path.mkdir(parents=True, exist_ok=True)
 snapshot_download(repo_id="mistralai/Mistral-7B-Instruct-v0.3", allow_patterns=["params.json", "consolidated.safetensors", "tokenizer.model.v3"], cache_dir=mistral_models_path)
 ```
 
+### Chat
+
+After installing `mistral_inference`, a `mistral-chat` command should be available in your CLI. You can chat with the model using
+
+```
+mistral-chat $HOME/mistral_models/7B-Instruct-v0.3
+```
+
 ### Instruct following
 
 ```py
