@@ -33,10 +33,10 @@ snapshot_download(repo_id="mistralai/Mistral-7B-Instruct-v0.3", allow_patterns=[
 
 ### Chat
 
-After installing `mistral_inference`, a `mistral-chat` command should be available in your CLI. You can chat with the model using
+After installing `mistral_inference`, a `mistral-chat` CLI command should be available in your environment. You can chat with the model using
 
 ```
-mistral-chat $HOME/mistral_models/7B-Instruct-v0.3
+mistral-chat $HOME/mistral_models/7B-Instruct-v0.3 --instruct --max_tokens 256
 ```
 
 ### Instruct following
