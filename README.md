@@ -120,16 +120,14 @@ print(result)
 If you want to use Hugging Face `transformers` to generate text, you can do something like this.
 
 ```py
-from transformers import AutoModelForCausalLM, AutoTokenizer
+from transformers import pipeline
 
-model_id = "mistralai/Mistral-7B-Instruct-v0.3"
-tokenizer = AutoTokenizer.from_pretrained(model_id)
-
-model = AutoModelForCausalLM.from_pretrained(model_id)
-inputs = tokenizer("Hello my name is", return_tensors="pt")
-
-outputs = model.generate(**inputs, max_new_tokens=20)
-print(tokenizer.decode(outputs[0], skip_special_tokens=True))
+messages = [
+    {"role": "system", "content": "You are a pirate chatbot who always responds in pirate speak!"},
+    {"role": "user", "content": "Who are you?"},
+]
+chatbot = pipeline("text-generation", model="mistralai/Mistral-7B-Instruct-v0.3")
+chatbot(messages)
 ```
 
 ## Limitations
