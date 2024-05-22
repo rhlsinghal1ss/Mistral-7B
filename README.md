@@ -13,7 +13,7 @@ Mistral-7B-v0.3 has the following changes compared to [Mistral-7B-v0.2](https://
 
 ## Installation
 
-It is recommended to use `mistralai/Mistral-7B-Instruct-v0.3` with [mistral-inference](https://github.com/mistralai/mistral-inference)
+It is recommended to use `mistralai/Mistral-7B-Instruct-v0.3` with [mistral-inference](https://github.com/mistralai/mistral-inference). For HF transformers code snippets, please keep scrolling.
 
 ```
 pip install mistral_inference
@@ -113,6 +113,21 @@ out_tokens, _ = generate([tokens], model, max_tokens=64, temperature=0.0, eos_id
 result = tokenizer.instruct_tokenizer.tokenizer.decode(out_tokens[0])
 
 print(result)
+```
+
+## Generate with `transformers`
+
+If you want to use Hugging Face `transformers` to generate text, you can do something like this.
+
+```py
+from transformers import pipeline
+
+messages = [
+    {"role": "system", "content": "You are a pirate chatbot who always responds in pirate speak!"},
+    {"role": "user", "content": "Who are you?"},
+]
+chatbot = pipeline("text-generation", model="mistralai/Mistral-7B-Instruct-v0.3")
+chatbot(messages)
 ```
 
 ## Limitations
