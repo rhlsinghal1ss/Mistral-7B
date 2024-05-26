@@ -6173,7 +6173,7 @@
     }
   },
   "bos_token": "<s>",
-  "chat_template": "{{ bos_token }}{% for message in messages %}{% if (message['role'] == 'user') != (loop.index0 % 2 == 0) %}{{ raise_exception('Conversation roles must alternate user/assistant/user/assistant/...') }}{% endif %}{% if message['role'] == 'user' %}{{ '[INST] ' + message['content'] + ' [/INST]' }}{% elif message['role'] == 'assistant' %}{{ message['content'] + eos_token}}{% else %}{{ raise_exception('Only user and assistant roles are supported!') }}{% endif %}{% endfor %}",
+  "chat_template": "{{ bos_token }}{% for message in messages %}{% if loop.index0 == 0 and message['role'] not in ['available_tools', 'user'] %}{{ raise_exception('The first message must be either available_tools or user role!') }}{% endif %}{% if message['role'] not in ['user', 'assistant', 'available_tools', 'tool_call', 'tool_results'] %}{{ raise_exception('Only user, assistant, available_tools, tool_call, and tool_results roles are supported!') }}{% endif %}{% if message['role'] == 'user' %}{{ '[INST] ' + message['content'] + '[/INST]' }}{% elif message['role'] == 'assistant' %}{{ message['content'] + eos_token }}{% elif message['role'] == 'available_tools' %}{{ '[AVAILABLE_TOOLS] ' + message['content'] + '[/AVAILABLE_TOOLS]' }}{% elif message['role'] == 'tool_call' %}{{ '[TOOL_CALLS]' + message['content'] + eos_token }}{% elif message['role'] == 'tool_results' %}{{ '[TOOL_RESULTS]' + message['content'] + '[/TOOL_RESULTS]' }}{% endif %}{% endfor %}",
   "clean_up_tokenization_spaces": false,
   "eos_token": "</s>",
   "legacy": false,
