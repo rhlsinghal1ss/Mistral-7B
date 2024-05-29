@@ -1,5 +1,19 @@
 ---
 license: apache-2.0
+datasets:
+- TIGER-Lab/MMLU-Pro
+language:
+- tr
+- en
+metrics:
+- code_eval
+- accuracy
+- character
+pipeline_tag: image-text-to-text
+tags:
+- finance
+- biology
+- medical
 ---
 
 # Model Card for Mistral-7B-Instruct-v0.3
